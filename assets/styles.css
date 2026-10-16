@@ -121,3 +121,10 @@ header nav a:hover{color:var(--sunset-gold)}
 @media(hover:hover){#produk .thumb:hover:before,#produk .thumb:focus-visible:before{opacity:.82}#produk .thumb:hover .product-illustration,#produk .thumb:focus-visible .product-illustration{transform:scale(1.03);filter:brightness(1.095) saturate(1.1)}}
 @media(hover:none),(pointer:coarse){#produk .thumb:before{opacity:.42}}
 @media(prefers-reduced-motion:reduce){#produk .thumb:before,#produk .thumb .product-illustration{transition:none!important;transform:none!important}}
+
+/* Warm food display lighting: amber lamp focused on the plated gethuk. */
+#produk .thumb{--light-x:50%;--light-y:37%}
+#produk .thumb:before{background:radial-gradient(ellipse 36% 45% at var(--light-x) var(--light-y),rgba(217,154,67,.33) 0%,rgba(196,123,42,.17) 42%,rgba(133,79,29,.04) 72%,transparent 88%);opacity:.44;mix-blend-mode:multiply}
+#produk .thumb .product-illustration{filter:brightness(1.015) saturate(1.07) sepia(.045)}
+@media(hover:hover){#produk .thumb:hover:before,#produk .thumb:focus-visible:before{opacity:.68}#produk .thumb:hover .product-illustration,#produk .thumb:focus-visible .product-illustration{transform:scale(1.03);filter:brightness(1.035) saturate(1.11) sepia(.06)}}
+@media(hover:none),(pointer:coarse){#produk .thumb:before{opacity:.48}}
