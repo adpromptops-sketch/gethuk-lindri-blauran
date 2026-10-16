@@ -93,3 +93,14 @@ header nav a:hover{color:var(--sunset-gold)}
 @media(hover:hover){.flag-heading:hover .flag-letter{animation-play-state:paused}}
 @media(max-width:520px){.flag-heading .flag-letter{animation-name:heroFlagWaveMobile}@keyframes heroFlagWaveMobile{0%,100%{transform:translateY(0)}35%{transform:translateY(-1.5px)}70%{transform:translateY(1.5px)}}}
 @media(prefers-reduced-motion:reduce){.flag-heading .flag-letter{animation:none!important;transform:none!important}}
+
+/* Spotlight CTA: warm guiding light, not a flashing advertisement. */
+.hero .spotlight-cta{--spot-x:50%;--spot-y:50%;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;min-height:46px;text-decoration:none;background:var(--batik-maroon);color:#fff9ec;box-shadow:0 0 0 1px #c49a5566,0 5px 18px #95192a33;transition:transform .25s ease,box-shadow .3s ease}
+.hero .spotlight-cta span{position:relative;z-index:2}
+.hero .spotlight-cta:before{content:'';position:absolute;inset:-40%;z-index:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,#fff2a900 43%,#fff2a977 50%,#fff2a900 57%,transparent 70%);transform:translateX(-95%) rotate(-8deg);animation:spotlightSweep 4.2s ease-in-out infinite}
+.hero .spotlight-cta:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--spot-x) var(--spot-y),#fff0a66b,transparent 67%);transition:opacity .25s ease}
+@keyframes spotlightSweep{0%,18%{transform:translateX(-95%) rotate(-8deg)}44%,100%{transform:translateX(95%) rotate(-8deg)}}
+@media(hover:hover){.hero .spotlight-cta:hover{transform:translateY(-2px);box-shadow:0 0 0 1px #f4c76baa,0 0 23px #f4c76b77,0 8px 23px #95192a44}.hero .spotlight-cta:hover:after{opacity:1}}
+.hero .spotlight-cta:active{transform:translateY(1px) scale(.98);box-shadow:0 0 0 1px #f4c76baa,0 0 8px #f4c76b55}
+@media(max-width:520px){.hero .spotlight-cta:before{opacity:.55}}
+@media(prefers-reduced-motion:reduce){.hero .spotlight-cta,.hero .spotlight-cta:before,.hero .spotlight-cta:after{animation:none!important;transition:none!important;transform:none!important}}
