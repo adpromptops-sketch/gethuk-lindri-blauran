@@ -113,3 +113,11 @@ header nav a:hover{color:var(--sunset-gold)}
 @media(max-width:850px){.hero .flag-heading{font-size:clamp(2.5rem,7.5vw,4.9rem)}}
 @media(max-width:520px){.hero .flag-heading{font-size:clamp(2.25rem,9.5vw,3.4rem)}}
 @media(max-width:360px){.hero .flag-heading{font-size:clamp(2.05rem,9.3vw,2.65rem)}}
+
+/* Golden Gallery Spotlight: warm gallery lighting for all product illustrations. */
+#produk .thumb{--light-x:50%;--light-y:28%;position:relative;isolation:isolate;cursor:pointer}
+#produk .thumb:before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 55% 70% at var(--light-x) var(--light-y),rgba(255,249,216,.67) 0%,rgba(244,199,107,.22) 42%,transparent 83%);opacity:.36;transition:opacity .35s ease}
+#produk .thumb .product-illustration{filter:brightness(1.025) saturate(1.045);transition:transform .42s cubic-bezier(.22,1,.36,1),filter .4s ease}
+@media(hover:hover){#produk .thumb:hover:before,#produk .thumb:focus-visible:before{opacity:.82}#produk .thumb:hover .product-illustration,#produk .thumb:focus-visible .product-illustration{transform:scale(1.03);filter:brightness(1.095) saturate(1.1)}}
+@media(hover:none),(pointer:coarse){#produk .thumb:before{opacity:.42}}
+@media(prefers-reduced-motion:reduce){#produk .thumb:before,#produk .thumb .product-illustration{transition:none!important;transform:none!important}}
