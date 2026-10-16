@@ -42,7 +42,7 @@ function draw(){if(!raf)raf=requestAnimationFrame(frame)}host.addEventListener('
 </script>
 <script>
 /* Gentle flag-wave typography: no extra library, text remains selectable in fallback. */
-(()=>{const heading=document.getElementById('flagHeading');if(!heading)return;const lines=heading.querySelectorAll('[data-wave-text]');for(const line of lines){const str=line.dataset.waveText;line.setAttribute('aria-hidden','true');line.replaceChildren(...[...str].map((char,i)=>{const span=document.createElement('span');span.className='flag-letter';span.textContent=char===' '?'\u00a0':char;span.style.setProperty('--wave-index',i);return span}))}})();
+(()=>{const heading=document.getElementById('flagHeading');if(!heading)return;const lines=heading.querySelectorAll('[data-wave-text]');for(const line of lines){const str=line.dataset.waveText;line.setAttribute('aria-hidden','true');line.replaceChildren(...str.split(' ').flatMap((word,wordIndex)=>{const group=document.createElement('span');group.className='flag-word';group.append(...[...word].map((char,i)=>{const span=document.createElement('span');span.className='flag-letter';span.textContent=char;span.style.setProperty('--wave-index',str.split(' ').slice(0,wordIndex).join(' ').length+(wordIndex?1:0)+i);return span}));return wordIndex?[document.createTextNode(' '),group]:[group]}))}})();
 </script>
 <script>
 /* Pointer spotlight for the primary product CTA. CSS handles idle animation. */
