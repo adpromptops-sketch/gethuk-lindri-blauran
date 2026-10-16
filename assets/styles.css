@@ -85,3 +85,11 @@ header nav a:hover{color:var(--sunset-gold)}
 /* Magnetic words remain readable and return smoothly to their original positions. */
 #produk .magnetic-word{display:inline-block;position:relative;will-change:transform;transition:transform .35s cubic-bezier(.22,1,.36,1)}
 @media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){#produk .magnetic-word{transform:none!important;transition:none!important;will-change:auto}}
+
+/* Automatic gentle flag wave for the hero headline. */
+.flag-heading .flag-line{display:block;font:inherit;line-height:inherit;white-space:normal}
+.flag-heading .flag-letter{display:inline-block;position:relative;animation:heroFlagWave 5.2s ease-in-out infinite;animation-delay:calc(var(--wave-index)*85ms);transform-origin:center center}
+@keyframes heroFlagWave{0%,100%{transform:translateY(0) rotate(0deg)}30%{transform:translateY(-2.6px) rotate(-.5deg)}60%{transform:translateY(2.6px) rotate(.5deg)}}
+@media(hover:hover){.flag-heading:hover .flag-letter{animation-play-state:paused}}
+@media(max-width:520px){.flag-heading .flag-letter{animation-name:heroFlagWaveMobile}@keyframes heroFlagWaveMobile{0%,100%{transform:translateY(0)}35%{transform:translateY(-1.5px)}70%{transform:translateY(1.5px)}}}
+@media(prefers-reduced-motion:reduce){.flag-heading .flag-letter{animation:none!important;transform:none!important}}
