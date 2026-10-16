@@ -104,3 +104,12 @@ header nav a:hover{color:var(--sunset-gold)}
 .hero .spotlight-cta:active{transform:translateY(1px) scale(.98);box-shadow:0 0 0 1px #f4c76baa,0 0 8px #f4c76b55}
 @media(max-width:520px){.hero .spotlight-cta:before{opacity:.55}}
 @media(prefers-reduced-motion:reduce){.hero .spotlight-cta,.hero .spotlight-cta:before,.hero .spotlight-cta:after{animation:none!important;transition:none!important;transform:none!important}}
+
+/* Zoom-safe headline: preserve whole words while allowing intentional line wraps. */
+.hero .flag-heading{max-width:none;width:100%;min-width:0;font-size:clamp(2.6rem,5.2vw,6.1rem);overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:pretty}
+.hero .flag-heading .flag-line{display:block;max-width:100%;white-space:normal;overflow-wrap:normal;word-break:normal}
+.hero .flag-heading .flag-word{display:inline-block;white-space:nowrap;vertical-align:baseline}
+.hero .flag-heading .flag-letter{white-space:pre}
+@media(max-width:850px){.hero .flag-heading{font-size:clamp(2.5rem,7.5vw,4.9rem)}}
+@media(max-width:520px){.hero .flag-heading{font-size:clamp(2.25rem,9.5vw,3.4rem)}}
+@media(max-width:360px){.hero .flag-heading{font-size:clamp(2.05rem,9.3vw,2.65rem)}}
