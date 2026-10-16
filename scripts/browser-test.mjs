@@ -6,6 +6,7 @@ const root=path.resolve('dist');
 const server=http.createServer((req,res)=>{const url=new URL(req.url,'http://localhost');const file=path.resolve(root,'.'+(url.pathname==='/'?'/index.html':url.pathname));if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return}try{const bytes=fs.readFileSync(file);res.setHeader('Content-Type',file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':'text/html');res.end(bytes)}catch{res.writeHead(404).end()}});
 await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
 const port=server.address().port;
+fs.mkdirSync('artifacts/screenshots',{recursive:true});
 let browser,failed=false;
 try{
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
@@ -19,6 +20,10 @@ try{
   const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,innerWidth:window.innerWidth,css:!![...document.styleSheets].find(s=>s.href?.includes('styles.css')),cards:document.querySelectorAll('#catalog .card').length}));
   if(metrics.scrollWidth>metrics.innerWidth+2)throw Error(name+' horizontal overflow '+JSON.stringify(metrics));
   if(!metrics.css||metrics.cards!==3)throw Error(name+' assets/catalog failed '+JSON.stringify(metrics));
+  const layout=await page.evaluate(()=>({overflow:[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect(),style=getComputedStyle(el);return style.position!=='fixed'&&r.width>0&&r.left<-4&&style.overflowX!=='hidden'&&style.overflowX!=='clip'}).slice(0,6).map(el=>el.tagName+'.'+el.className),ctaHeight:document.querySelector('#spotlightCta').getBoundingClientRect().height,nav:performance.getEntriesByType('navigation')[0]?.duration||0}));
+  if(layout.ctaHeight<44)throw Error(name+' primary CTA touch target '+layout.ctaHeight);
+  await page.screenshot({path:'artifacts/screenshots/'+name+'.png',fullPage:true,animations:'disabled'});
+  console.log('AUDIT '+name+' '+JSON.stringify(layout));
   await page.locator('#catalog [data-detail="box6"]').first().click();
   await page.locator('#orderQty').fill('2');await page.locator('#orderQty').dispatchEvent('change');
   await page.locator('#modalAdd').click();
