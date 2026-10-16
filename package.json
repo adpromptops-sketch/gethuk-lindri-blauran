@@ -1,0 +1,11 @@
+{
+  "name": "gethuk-lindri-blauran",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node --check scripts/audit.mjs",
+    "test": "node scripts/audit.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}
