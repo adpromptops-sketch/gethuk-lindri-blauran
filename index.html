@@ -47,4 +47,8 @@ function draw(){if(!raf)raf=requestAnimationFrame(frame)}host.addEventListener('
 <script>
 /* Pointer spotlight for the primary product CTA. CSS handles idle animation. */
 (()=>{const button=document.getElementById('spotlightCta');if(!button||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;button.addEventListener('pointermove',e=>{const r=button.getBoundingClientRect();button.style.setProperty('--spot-x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');button.style.setProperty('--spot-y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%')},{passive:true});button.addEventListener('pointerleave',()=>{button.style.removeProperty('--spot-x');button.style.removeProperty('--spot-y')})})();
+</script>
+<script>
+/* Gallery spotlight follows the pointer without interfering with product buttons. */
+(()=>{if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;const catalog=document.getElementById('catalog');if(!catalog)return;catalog.addEventListener('pointermove',e=>{const thumb=e.target.closest('.thumb');if(!thumb||!catalog.contains(thumb))return;const r=thumb.getBoundingClientRect();thumb.style.setProperty('--light-x',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');thumb.style.setProperty('--light-y',((e.clientY-r.top)/r.height*100).toFixed(1)+'%')},{passive:true});catalog.addEventListener('pointerout',e=>{const thumb=e.target.closest('.thumb');if(thumb&&!thumb.contains(e.relatedTarget)){thumb.style.removeProperty('--light-x');thumb.style.removeProperty('--light-y')}})})();
 </script></body></html>
