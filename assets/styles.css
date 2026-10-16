@@ -139,3 +139,19 @@ header nav a:hover{color:var(--sunset-gold)}
 @media(hover:hover){#produk .thumb:hover .float-platter,#produk .thumb:hover .float-shadow,#produk .thumb:focus-visible .float-platter,#produk .thumb:focus-visible .float-shadow{animation-play-state:paused}}
 @media(hover:none),(pointer:coarse){#produk .float-platter{animation-name:gethukWaterFloatMobile}@keyframes gethukWaterFloatMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}}
 @media(prefers-reduced-motion:reduce){#produk .float-platter,#produk .float-shadow{animation:none!important;transform:none!important}}
+
+/* Coordinated heritage ambience: low-contrast flowing gold lines behind the content. */
+.hero,.story{isolation:isolate}
+.hero>.heritage-motion,.story>.heritage-motion{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:.55}
+.hero>.heritage-motion svg,.story>.heritage-motion svg{position:absolute;left:-7%;bottom:-3%;width:114%;height:75%;overflow:visible}
+.hero>.heritage-motion .motion-wave,.story>.heritage-motion .motion-wave{fill:none;stroke:#fff0b4;stroke-width:1.25;stroke-linecap:round;opacity:.54}
+.hero>.heritage-motion .wave-back,.story>.heritage-motion .wave-back{animation:heritageDrift 19s ease-in-out infinite alternate}
+.hero>.heritage-motion .wave-front,.story>.heritage-motion .wave-front{animation:heritageDrift 24s ease-in-out infinite alternate-reverse;stroke-width:1.7}
+.hero>.heritage-motion .motion-stars,.story>.heritage-motion .motion-stars{fill:#f4c76b;animation:heritageTwinkle 7s ease-in-out infinite alternate}
+.story>.heritage-motion{opacity:.36}
+.story>.heritage-motion .motion-wave{stroke:#c49a55;opacity:.65}
+.hero>.heritage-motion~*,.story>.heritage-motion~*{position:relative;z-index:1}
+@keyframes heritageDrift{from{transform:translateX(-2.2%) translateY(0)}to{transform:translateX(2.2%) translateY(-8px)}}
+@keyframes heritageTwinkle{from{opacity:.25;transform:translateY(3px)}to{opacity:.75;transform:translateY(-5px)}}
+@media(max-width:520px){.hero>.heritage-motion svg,.story>.heritage-motion svg{height:50%;width:160%;left:-30%}.hero>.heritage-motion{opacity:.3}.story>.heritage-motion{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.heritage-motion .motion-wave,.heritage-motion .motion-stars{animation:none!important;transform:none!important}}
