@@ -261,3 +261,28 @@ header #cartToggle{background:#801727;color:#fff9ea;border:1px solid #b97853;min
 @media(max-width:600px){header{padding:12px 16px}header .logo{font-size:.99rem;gap:7px}header .logo .brand-mark{width:32px;height:32px;font-size:1.2rem}header .logo small{font-size:.43rem;letter-spacing:.16em}header #cartToggle{font-size:.73rem;padding:10px}.hero{padding:37px 20px 39px}.hero h1{font-size:clamp(2.6rem,10vw,4rem)}.hero p{font-size:.87rem;line-height:1.6}.hero .stage{height:clamp(248px,73vw,370px)}.v6-art-scene{inset:-4% -17% 1%}.v6-art-label{font-size:.45rem;left:18%;bottom:12%}.v6-3d-toggle{right:1%;bottom:0;font-size:.7rem;padding:7px 10px}.ribbon{gap:10px;min-height:55px;padding:10px 15px;font-size:.52rem;text-align:center;line-height:1.6}.ribbon i{font-size:.8rem}.section#produk{padding:54px 18px 65px}#produk .grid{grid-template-columns:1fr;max-width:420px;margin-inline:auto;gap:17px}#produk .thumb{aspect-ratio:1.65}#produk .card-body{padding:13px 16px 16px}.v6-card-title{flex-wrap:nowrap}#produk .v6-buy-row{flex-wrap:nowrap}#produk .v6-buy-row .add{flex:0 0 auto;min-width:128px}#overlay{align-items:flex-end;padding:0}#overlay .modal{max-width:100%;width:100%;max-height:96dvh;border-radius:18px 18px 0 0}#overlay .modal-visual{height:190px}#overlay .modal-visual .product-illustration{min-height:190px;max-height:190px}#overlay .v6-modal-info{padding:17px 18px 24px}#overlay #modalTitle{font-size:1.8rem;margin:8px 0}#overlay #modalPrice{font-size:1.4rem;margin:8px 0}#overlay .note-container textarea{min-height:70px}#overlay .order-container{padding:10px;margin:9px 0}#overlay #modalAdd{position:sticky;bottom:0;box-shadow:0 0 0 8px #fff2dc}}
 @media(max-width:360px){header .logo{font-size:.85rem}header #cartToggle{font-size:.65rem;padding-inline:8px}#produk .v6-buy-row .price{font-size:1rem}#produk .v6-buy-row .add{min-width:112px;font-size:.72rem}.v6-filter{padding:10px 13px}.ribbon{gap:6px}}
 @media(prefers-reduced-motion:reduce){.v6-art-scene img{animation:none!important}.v6-art-scene,#produk .card,#produk .product-illustration{transition:none!important;transform:none!important}}
+
+
+/* Minimal v6.1: quiet canvas, one clear product focal point, no floating ornaments. */
+.hero{background:linear-gradient(115deg,#fff3dc 0%,#f8e5c6 56%,#f0d2a8 100%);min-height:560px;padding-top:54px;padding-bottom:60px}
+.hero::before,.hero::after{display:none!important}
+.hero .stage::before{background:radial-gradient(ellipse,#ffe9c1a6,transparent 70%);inset:14% 0}
+.hero .stage{height:clamp(320px,34vw,490px)}
+.hero .stage .v6-art-scene{inset:2% -3% 2%}
+.hero .v6-art-scene img{filter:drop-shadow(0 18px 17px #6a462c24);animation:v6HeroFloat 8s ease-in-out infinite}
+.hero .v6-art-label{background:#fff3dcdd;color:#79583f;bottom:2%;left:17%}
+.hero .stage-caption{display:none}
+.hero .v6-3d-toggle{background:#fff6e8;border-color:#ddbf99;box-shadow:0 2px 9px #6c462014}
+.story{background:#301c16!important;color:#f8e7cc;gap:clamp(24px,5vw,76px);padding-block:clamp(64px,8vw,112px);border:0}
+.story::before,.story::after{content:none!important;display:none!important}
+.story .story-eyebrow{color:#ddb98b}
+.story h2{font-size:clamp(2.35rem,4.3vw,4.7rem);line-height:1.1;letter-spacing:-.025em;max-width:640px}
+.story p{color:#e4d0b5;max-width:570px;font-size:.94rem;line-height:1.75}
+.story .story-art{position:relative;min-height:320px;border:1px solid #76513a;background:#41291e!important;box-shadow:none!important;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px 24px;overflow:hidden;color:#f5e2c3;text-align:center}
+.story .story-art::before,.story .story-art::after{content:none!important;display:none!important}
+.story-art-kicker{font:700 .65rem/1.4 system-ui,sans-serif;letter-spacing:.2em;color:#d9b48a}
+.story-art strong{font:400 clamp(2rem,3.2vw,3.45rem)/1.13 Georgia,serif}
+.story-art-rule{display:block;width:60px;height:1px;background:#ad805a}
+@media(max-width:850px){.hero{min-height:0}.hero .stage{height:clamp(285px,50vw,430px)}.story{padding:70px 6vw}.story .story-art{min-height:250px}}
+@media(max-width:600px){.hero{padding:36px 20px 36px}.hero .stage{height:clamp(240px,72vw,340px)}.hero .stage .v6-art-scene{inset:0 -12%}.hero .v6-art-label{left:16%;bottom:7%;font-size:.45rem}.story{padding:55px 20px;gap:25px}.story h2{font-size:clamp(2.25rem,9vw,3.2rem)}.story .story-art{min-height:210px;padding:28px 18px}.story-art strong{font-size:2.15rem}}
+@media(prefers-reduced-motion:reduce){.hero .v6-art-scene img{animation:none!important}}
